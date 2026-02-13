@@ -29,7 +29,7 @@ const Footer = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6" gutterBottom>
-              EduLearn
+             Navkranti Education
             </Typography>
             <Typography variant="body2">
               Empowering students through quality education since 2005.

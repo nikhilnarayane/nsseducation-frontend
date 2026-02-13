@@ -98,7 +98,7 @@ const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
           {/* Desktop Logo */}
           {/* <SchoolIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Link href="/" style={{ textDecoration: "none", color: "inherit", flexGrow: 1 }}>
-          <Image src="/logo.png" alt="EduLearn Logo" width={55} height={55} />
+          <Image src="/logo.png" alt="Navkranti Education" width={70} height={60} />
             {/* <Typography
               variant="h6"
               sx={{
