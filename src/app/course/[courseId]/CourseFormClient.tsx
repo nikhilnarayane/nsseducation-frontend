@@ -102,7 +102,7 @@ export default function CourseFormClient() {
         <TextField fullWidth size='small' label="Mobile" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} sx={{ mb: 2 }} />
         <TextField fullWidth size='small' label="Email" name="email" value={formData.email} onChange={handleChange} sx={{ mb: 2 }} />
 
-        <Button variant="contained" fullWidth onClick={() => router.push(`/pages/CourseForm/?courseId=${course?.id}&duration=${encodeURIComponent(formData.courseDuration)}&name=${encodeURIComponent(formData.name)}&mobileNumber=${encodeURIComponent(formData.mobileNumber)}&email=${encodeURIComponent(formData.email)}`)}>
+        <Button variant="contained" fullWidth onClick={() => router.push(`/CourseForm/?courseId=${course?.id}&duration=${encodeURIComponent(formData.courseDuration)}&name=${encodeURIComponent(formData.name)}&mobileNumber=${encodeURIComponent(formData.mobileNumber)}&email=${encodeURIComponent(formData.email)}`)}>
           Submit
         </Button>
       </Paper>

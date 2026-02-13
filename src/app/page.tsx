@@ -4,19 +4,19 @@ import styles from "./page.module.css";
 import { Box } from '@mui/material';
 import Navbar from './components/Navbar/page';
 import Footer from './components/Footer/page';
-// import Home from '../pages/Home/page';
-import AboutUs from './pages/AboutUs/page';
-import Courses from './pages/Courses/page';
-import Login from './pages/Login/page';
-import Signup from './pages/Signup/page';
-import CourseForm from './pages/CourseForm/page';
-import Results from './pages/Results/page';
-import PaymentSuccess from './pages/PaymentSuccess/page';
+// import Home from '../(pages)/Home/page';
+import AboutUs from './(pages)/AboutUs/page';
+import Courses from './(pages)/Courses/page';
+import Login from './(pages)/Login/page';
+import Signup from './(pages)/Signup/page';
+import CourseForm from './(pages)/CourseForm/page';
+import Results from './(pages)/Results/page';
+import PaymentSuccess from './(pages)/PaymentSuccess/page';
 import Link from "next/link";
 import { redirect } from 'next/navigation';
 
 export default function Home() {
-  redirect('/pages/Home');
+  redirect('/Home');
   return (
     <div className={styles.page}>
          

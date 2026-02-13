@@ -35,11 +35,11 @@ const Navbar = () => {
 
   const pages = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/pages/AboutUs" },
-    { name: "Courses", path: "/pages/Courses" },
-    { name: "Results", path: "/pages/Results" },
-    { name: "Gallery", path: "/pages/Gallery" },
-    { name: "Contact Us", path: "/pages/Contact" },
+    { name: "About Us", path: "/AboutUs" },
+    { name: "Courses", path: "/Courses" },
+    { name: "Results", path: "/Results" },
+    { name: "Gallery", path: "/Gallery" },
+    { name: "Contact Us", path: "/Contact" },
   ];
 
 const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
