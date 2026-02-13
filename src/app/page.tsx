@@ -1,66 +1,43 @@
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import { Box } from '@mui/material';
+import Navbar from './components/Navbar/page';
+import Footer from './components/Footer/page';
+// import Home from '../pages/Home/page';
+import AboutUs from './pages/AboutUs/page';
+import Courses from './pages/Courses/page';
+import Login from './pages/Login/page';
+import Signup from './pages/Signup/page';
+import CourseForm from './pages/CourseForm/page';
+import Results from './pages/Results/page';
+import PaymentSuccess from './pages/PaymentSuccess/page';
+import Link from "next/link";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
+  redirect('/pages/Home');
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+         
+            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+              {/* <Navbar /> */}
+              {/* <Box component="main" sx={{ flexGrow: 1 }}>
+                  <Link  href="/Home">Home</Link>
+                  <Link  href="/AboutUs">AboutUs</Link>
+                  <Link  href="/Courses">Courses</Link>
+                  <Link  href="/Login">Login</Link>
+                  <Link  href="/Signup">Sign Up</Link>
+                  <Link  href="/CourseForm/:courseId">Course Form</Link>
+                  <Link  href="/results">Results</Link>
+                  <Link  href="/PaymentSuccess"></Link>
+              </Box> */}
+              {/* <main className={styles.main}>
+              </main>
+              <Footer /> */}
+            </Box>
+
+      
     </div>
   );
 }
