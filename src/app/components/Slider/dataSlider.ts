@@ -1,4 +1,5 @@
 // src/components/slider/data.ts
+'use client'
 export const slides = [
   {
     title: 'Shape Your Future',
