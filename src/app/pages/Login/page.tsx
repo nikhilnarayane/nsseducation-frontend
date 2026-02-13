@@ -32,20 +32,29 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setError('');
+  // const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   e.preventDefault();
+  //   setError('');
 
-    if (!formData.email || !formData.password) {
-      setError('Please fill in all fields');
-      return;
-    }
+  //   if (!formData.email || !formData.password) {
+  //     setError('Please fill in all fields');
+  //     return;
+  //   }
 
-    console.log('Login data:', formData);
+  //   console.log('Login data:', formData);
 
-    // ✅ Redirect without react-router
-    window.location.href = '/';
-  };
+  //   // ✅ Redirect without react-router
+  //   window.location.href = '/';
+  // };
+
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      console.log('Signup data:', formData);
+  
+      // ✅ Redirect
+      window.location.href = '/login';
+    };
 
   return (
     <Container maxWidth="sm" sx={{ py: 8 }}>

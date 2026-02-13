@@ -1,7 +1,6 @@
 
-'use client'
 import CourseFormClient from './CourseFormClient';
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return [
     { courseId: '1' },
     { courseId: '2' },
