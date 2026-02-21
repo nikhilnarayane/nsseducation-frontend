@@ -61,7 +61,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             {course.title}
           </Typography>
 
-          <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 2 }}>
+          <Typography color="text.secondary" sx={{ mb: 2 }}>
             {course.description}
           </Typography>
 

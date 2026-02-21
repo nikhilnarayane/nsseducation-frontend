@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   Container,
@@ -17,10 +17,41 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import { allCourses } from '../../util/coursesList';
 
-const Courses = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
 
-  const filteredCourses = allCourses.filter((course) =>
+const Courses = () => {
+
+  type Course = {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  duration: string;
+  fee: string;
+};
+
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchCourses() {
+      try {
+        const res = await fetch("/api/get-courses");
+        const data: Course[] = await res.json();
+        console.log("data", data);
+        
+        setCourses(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchCourses();
+  }, []);
+  
+  const filteredCourses = courses.filter((course) =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     course.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -73,10 +104,10 @@ const Courses = () => {
                     mb: 2,
                   }}
                 >
-                  <Typography variant="h5">
+                  <Typography variant="subtitle1">
                     {course.title}
                   </Typography>
-                  <Chip label={course.category} color="primary" size="small" />
+                  <Chip label={course.category} color="primary" sx={{px:1}} size="small" />
                 </Box>
 
                 <Typography
@@ -105,9 +136,10 @@ const Courses = () => {
               <Box sx={{ p: 2, pt: 0 }}>
                 <Button
                   fullWidth
+                  size='small'
                   variant="contained"
                   component={Link}
-                  href={`/course/${course.id}`}
+                  href={`/Courses/${course.id}`}
                 >
                   Enroll Now
                 </Button>

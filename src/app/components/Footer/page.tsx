@@ -6,6 +6,8 @@ import {
   Grid,
   Typography,
   IconButton,
+    ListItem,
+    ListItemText,
 } from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -15,6 +17,11 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import Link from "next/link";
 import { allCourses } from '../../util/coursesList';
 const Footer = () => {
+    const pages = [
+    { name: "Insert", path: "/Insert" },
+    { name: "User List", path: "/UserList" },
+    { name: "Enrollments", path: "/Enrollments" },
+  ];
   return (
     <Box
       component="footer"
@@ -35,6 +42,16 @@ const Footer = () => {
               Empowering students through quality education since 2005.
               Your success is our mission.
             </Typography>
+             {pages.map((page) => (
+                      <ListItem key={page.name} disablePadding>
+                        <Link
+                          href={page.path}
+                          style={{ width: "100%", textDecoration: "none", color: "inherit" }}
+                        >
+                          <ListItemText primary={page.name} sx={{ textAlign: "center" }} />
+                        </Link>
+                      </ListItem>
+                    ))}
           </Grid>
           
           <Grid item xs={12} sm={6} md={3}>

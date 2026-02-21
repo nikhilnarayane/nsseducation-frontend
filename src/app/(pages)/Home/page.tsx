@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   Grid,
@@ -9,20 +9,49 @@ import {
   Paper,
 } from '@mui/material';
 
-// import Slider from '@/app/components/Slider/page';
-import CourseCard from '@/app/components/CourseCard/page';
+// import Slider from '@/src/app/components/Slider/page';
+import CourseCard from '@/src/app/components/CourseCard/page';
 
 import SchoolIcon from '@mui/icons-material/School';
 import GroupsIcon from '@mui/icons-material/Groups';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import Slider from '@/app/components/Slider/Slider';
+import Slider from '@/src/app/components/Slider/Slider';
 import Link from 'next/link';
-// import { courses } from '@/app/util/coursesList'; 
+// import { courses } from '@/src/app/util/coursesList'; 
 import { allCourses } from '../../util/coursesList';
 
 
 
 const Home = () => {
+    type Course = {
+      id: number;
+      title: string;
+      description: string;
+      category: string;
+      duration: string;
+      fee: string;
+    };
+
+    const [courses, setCourses] = useState<Course[]>([]);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      async function fetchCourses() {
+        try {
+          const res = await fetch("/api/get-courses");
+          const data: Course[] = await res.json();
+          console.log("data", data);
+          
+          setCourses(data);
+        } catch (err) {
+          console.error(err);
+        } finally {
+          setLoading(false);
+        }
+      }
+  
+      fetchCourses();
+    }, []);
   return (
     <Box>
       {/* Hero Slider */}
@@ -90,7 +119,7 @@ const Home = () => {
           </Typography>
 
           <Grid container spacing={4}>
-            {allCourses.map((course) => (
+            {courses.map((course) => (
               <Grid item key={course.id} xs={12} sm={6} md={4}>
                 <CourseCard course={course} />
               </Grid>
