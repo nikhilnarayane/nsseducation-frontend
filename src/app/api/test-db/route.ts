@@ -1,4 +1,4 @@
-import pool from "@/lib/db";
+import pool from "lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -8,6 +8,7 @@ export async function GET() {
       success: true,
       time: result.rows[0],
     });
+    
   } catch (error: any) {
     console.error("DB CONNECTION ERROR:", error);
     return NextResponse.json(

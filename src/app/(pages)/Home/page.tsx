@@ -6,7 +6,7 @@ import {
   Typography,
   Box,
   Button,
-  Paper,
+  Paper,  
 } from '@mui/material';
 
 // import Slider from '@/src/app/components/Slider/page';
@@ -119,7 +119,7 @@ const Home = () => {
           </Typography>
 
           <Grid container spacing={4}>
-            {courses.map((course) => (
+            {courses?.map((course) => (
               <Grid item key={course.id} xs={12} sm={6} md={4}>
                 <CourseCard course={course} />
               </Grid>
