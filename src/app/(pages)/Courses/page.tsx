@@ -38,7 +38,7 @@ const Courses = () => {
       try {
         const res = await fetch("/api/get-courses");
         const data: Course[] = await res.json();
-        console.log("data", data);
+        console.log("data-get-courses", data);
         
         setCourses(data);
       } catch (err) {
