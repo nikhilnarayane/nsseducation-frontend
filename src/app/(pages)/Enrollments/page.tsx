@@ -2,21 +2,46 @@
 import { useEffect, useState } from "react";
 import { Paper, Typography, List, ListItem, ListItemText, Container, CircularProgress } from "@mui/material";
 
-type User = {
+// type User = {
+//   id: number;
+//   name: string;
+//   mobile: string;
+//   email: string;
+// };
+
+interface Course {
   id: number;
-  name: string;
-  mobile: string;
+  course_duration: string;
+  course_title: string;
   email: string;
-};
+  mobile_number: string;
+  name: number;
+  isDate:string // 0 or 1 from DB
+}
 
 export default function UsersList() {
-const [enrollments, setEnrollments] = useState<any[]>([]);
+const [enrollments, setEnrollments] = useState<Course[]>([]);
 
 useEffect(() => {
-  fetch("/api/course-enrollments")
-    .then(res => res.json())
-    .then(data => setEnrollments(data))
-    .catch(err => console.error(err));
+        async function fetchCourses() {
+            try {
+              const res = await fetch("/api/course-enrollments");
+              const data = await res.json();
+              debugger
+              const setDat: Course[] = data[0]; // ✅ now correct
+              console.log("data-get-courses---->", setDat);
+              setEnrollments(setDat); // ✅ no error
+            } catch (err) {
+              console.error(err);
+            } finally {
+              // setLoading(false);
+            }
+          }
+        fetchCourses();   
+  // fetch("/api/course-enrollments")
+  //   .then(res => res.json())
+  //   .then(data => setEnrollments(data))
+  //   .catch(err => console.error(err));
 }, []);
 
   return (
@@ -36,7 +61,7 @@ useEffect(() => {
               <ListItem key={enrollment.id} divider>
                 <ListItemText
                   primary={enrollment.name}
-                  secondary={`Course: ${enrollment.course_title} | Mobile: ${enrollment.mobile_number} | Email: ${enrollment.email}`}
+                  secondary={`Course: ${enrollment.course_title} | Mobile: ${enrollment.mobile_number} | Email: ${enrollment.email} | Date:${enrollment.isDate}`}
                 />
               </ListItem>
             ))}

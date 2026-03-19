@@ -48,7 +48,7 @@ const Footer = () => {
                           href={page.path}
                           style={{ width: "100%", textDecoration: "none", color: "inherit" }}
                         >
-                          <ListItemText primary={page.name} sx={{ textAlign: "center" }} />
+                          <ListItemText  primary={page.name} sx={{ textAlign: "left" }} />
                         </Link>
                       </ListItem>
                     ))}

@@ -153,30 +153,30 @@ export default function ContactUs() {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2} mt={1}>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField label="Name" fullWidth value={formData.full_name}
                 onChange={handleInputChange('full_name')} />
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField label="Email" fullWidth value={formData.email}
                 onChange={handleInputChange('email')} />
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField label="Phone" fullWidth type="tel"
                 value={formData.phone}
                 onChange={handleInputChange('phone')} />
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField label="Subject" fullWidth
                 value={formData.subject}
                 onChange={handleInputChange('subject')} />
             </Grid>
 
             {/* ✅ FIXED SELECT */}
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <FormControl fullWidth error={!!errors.select_department}>
                 <InputLabel>Select Department</InputLabel>
                 <Select
@@ -195,13 +195,13 @@ export default function ContactUs() {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField label="Message" multiline rows={4} fullWidth
                 value={formData.message}
                 onChange={handleInputChange('message')} />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -216,7 +216,7 @@ export default function ContactUs() {
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <Button type="submit" variant="contained" fullWidth disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Submit"}
               </Button>
