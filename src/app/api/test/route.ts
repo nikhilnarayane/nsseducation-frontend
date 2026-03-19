@@ -22,8 +22,8 @@ import pool from "@/lib/db";
 export async function GET() {
   try {
     const result = await pool.query("SELECT NOW()");
-     console.log("DB CONNECTION SUCCESS:", result.rows[0]);
-    return Response.json(result.rows);
+     console.log("DB CONNECTION SUCCESS:", result);
+    return Response.json(result);
   } catch (error: any) {
     console.error(error);
     return Response.json({ error: error.message }, { status: 500 });

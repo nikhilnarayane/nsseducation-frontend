@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       email,
     ]);
 
-    return NextResponse.json(result.rows[0]);
+    return NextResponse.json(result);
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Database error" }, { status: 500 });

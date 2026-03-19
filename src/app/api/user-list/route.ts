@@ -7,7 +7,7 @@ export async function GET() {
     const result = await pool.query("SELECT * FROM users ORDER BY id ASC");
     
     // Return all users (empty array if no rows)
-    return NextResponse.json(result.rows, { status: 200 });
+    return NextResponse.json(result, { status: 200 });
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error("DB Error:", error.message);

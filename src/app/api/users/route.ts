@@ -63,7 +63,7 @@ export async function POST(req: Request) {
       [name, mobile, email]
     );
 
-    return NextResponse.json(result.rows[0], { status: 201 });
+    return NextResponse.json(result, { status: 201 });
   } catch (error: unknown) {
     console.error(error);
     return NextResponse.json({ error: "Database error" }, { status: 500 });
@@ -73,7 +73,7 @@ export async function POST(req: Request) {
 export async function GET() {
   try {
     const result = await pool.query("SELECT * FROM users ORDER BY id ASC");
-    return NextResponse.json(result.rows, { status: 200 });
+    return NextResponse.json(result, { status: 200 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Database error" }, { status: 500 });
