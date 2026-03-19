@@ -42,7 +42,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
       }}
     >
       {/* Clickable Card */}
-      <CardActionArea component={Link} href={`/course/${course.id}`}>
+      <CardActionArea component={Link} href={`/Courses/${course.id}`}>
         <CardMedia
           component="img"
           image={course.image || defaultImage}

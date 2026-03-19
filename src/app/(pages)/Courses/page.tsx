@@ -35,18 +35,18 @@ const Courses = () => {
 
   useEffect(() => {
     async function fetchCourses() {
-      try {
-        const res = await fetch("/api/get-courses");
-        const data: Course[] = await res.json();
-        console.log("data-get-courses", data);
-        
-        setCourses(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
+        try {
+          const res = await fetch("/api/get-courses");
+          const data = await res.json();
+          const setDat: Course[] = data[0]; // ✅ now correct
+          console.log("data-get-courses---->", setDat);
+          setCourses(setDat); // ✅ no error
+        } catch (err) {
+          console.error(err);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
 
     fetchCourses();
   }, []);

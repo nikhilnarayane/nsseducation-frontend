@@ -11,7 +11,7 @@ export async function GET() {
         ce.name,
         ce.mobile_number,
         ce.email
-      FROM course_enrollments ce
+      FROM courses_enquiry ce
       JOIN courses c ON ce.course_id = c.id
       ORDER BY ce.id DESC;
     `;

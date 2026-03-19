@@ -7,13 +7,12 @@ export async function POST(req: Request) {
     const { courseId, courseDuration, name, mobileNumber, email } = body;
 
     const query = `
-      INSERT INTO course_enrollments
+      INSERT INTO courses_enquiry
       (course_id, course_duration, name, mobile_number, email)
-      VALUES ($1, $2, $3, $4, $5)
-      RETURNING *;
+      VALUES (?, ?, ?, ?, ?)
     `;
 
-    const result = await pool.query(query, [
+    const [result]: any = await pool.query(query, [
       courseId,
       courseDuration,
       name,
@@ -21,10 +20,18 @@ export async function POST(req: Request) {
       email,
     ]);
 
-    return NextResponse.json(result);
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Database error" }, { status: 500 });
+    return NextResponse.json({
+      success: true,
+      insertId: result.insertId,
+    });
+
+  } catch (error: any) {
+    console.error("DB ERROR:", error);
+
+    return NextResponse.json(
+      { success: false, error: error.message },
+      { status: 500 }
+    );
   }
 }
 
@@ -39,7 +46,8 @@ export async function POST(req: Request) {
 //     const { courseId, courseDuration, name, mobileNumber, email } = body;
 
 //     const query = `
-//       INSERT INTO course_enrollments
+//       INSERT INTO courses_enquiry
+
 //       (course_id, course_duration, name, mobile_number, email)
 //       VALUES ($1, $2, $3, $4, $5)
 //       RETURNING *;
