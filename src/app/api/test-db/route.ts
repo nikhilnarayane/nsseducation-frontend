@@ -3,12 +3,13 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const result = await pool.query("SELECT NOW()");
+    const [rows]: any = await pool.query("SELECT NOW() as time");
+
     return NextResponse.json({
       success: true,
-      time: result.rows[0],
+      time: rows[0].time,
     });
-    
+
   } catch (error: any) {
     console.error("DB CONNECTION ERROR:", error);
     return NextResponse.json(
