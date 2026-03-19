@@ -20,36 +20,60 @@ import Link from 'next/link';
 // import { courses } from '@/src/app/util/coursesList'; 
 import { allCourses } from '../../util/coursesList';
 
-
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  duration: string;
+  fee: string;
+  isactive: number; // 0 or 1 from DB
+}
 
 const Home = () => {
-    type Course = {
-      id: number;
-      title: string;
-      description: string;
-      category: string;
-      duration: string;
-      fee: string;
-    };
+    // type Course = {
+    //   id: number;
+    //   title: string;
+    //   description: string;
+    //   category: string;
+    //   duration: string;
+    //   fee: string;
+    // };
 
     const [courses, setCourses] = useState<Course[]>([]);
     const [loading, setLoading] = useState(true);
   
     useEffect(() => {
-      async function fetchCourses() {
-        try {
-          const res = await fetch("/api/get-courses");
-          const data: Course[] = await res.json();
-          console.log("data-get-courses---->", data);
+      // async function fetchCourses() {
+      //   try {
+      //     const res = await fetch("/api/get-courses");
+      //     debugger
+      //     const data: Course[] = await res.json();
+      //     const setDat= data[0]
+      //     console.log("data-get-courses---->",setDat);
           
-          setCourses(data);
-        } catch (err) {
-          console.error(err);
-        } finally {
-          setLoading(false);
-        }
-      }
-  
+      //     setCourses(setDat);
+      //   } catch (err) {
+      //     console.error(err);
+      //   } finally {
+      //     setLoading(false);
+      //   }
+      // }
+
+      async function fetchCourses() {
+            try {
+              const res = await fetch("/api/get-courses");
+              const data = await res.json();
+              const setDat: Course[] = data[0]; // ✅ now correct
+              console.log("data-get-courses---->", setDat);
+              setCourses(setDat); // ✅ no error
+            } catch (err) {
+              console.error(err);
+            } finally {
+              setLoading(false);
+            }
+          }
+            
       fetchCourses();
     }, []);
   return (
